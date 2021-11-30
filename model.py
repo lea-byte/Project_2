@@ -93,7 +93,7 @@ def unet(input_img = (None,None,3), nbr_filters=16, dropout_rate = 0.1,
 
    model = Model(inputs = [input_img], outputs = [layer10])
 
-   model.compile(optimizer = optimizer, loss = loss, metrics = [f1, 'accuracy'])
+   model.compile(optimizer = optimizer, loss = loss, metrics = ['accuracy'])
     
 
    return model
