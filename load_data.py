@@ -14,7 +14,7 @@ root_dir = "C:/Users/blert/Desktop/project2/project_road_segmentation/training/"
 
 image_dir = root_dir + "images/"
 files = os.listdir(image_dir)
-n = min(100, len(files)) # Load maximum 20 images
+n = min(100, len(files)) #Load 100 images
 print("Loading " + str(n) + " images")
 
 imgs = [load_image(image_dir + files[i]) for i in range(n)]
