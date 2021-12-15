@@ -17,11 +17,13 @@ def rotate_images(X, Y, degrees):
      Y: list of groundtruth images in train set
     """
 
-    X = np.asarray(X)
-    Y = np.asarray(Y)
-    X_rot = np.zeros(X.shape) #returns shape: [image indes, rows, cols, depth]
-    Y_rot = np.zeros(Y.shape)
+    # X = np.asarray(X)
+    # Y = np.asarray(Y)
+    # X_rot = np.zeros(X.shape) #returns shape: [image indeX, rows, cols, depth]
+    # Y_rot = np.zeros(Y.shape)
     
+    X_rot = X
+    Y_rot = Y
     X_temp = X #because one is going to modify the original input several times
     Y_temp = Y
 
@@ -35,8 +37,6 @@ def rotate_images(X, Y, degrees):
         X = np.concatenate([X, X_rot])
         Y = np.concatenate([Y, Y_rot])
         
-        X_rot = np.zeros(X.shape) 
-        Y_rot = np.zeros(Y.shape)
     
     return X, Y
 
