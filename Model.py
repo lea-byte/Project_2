@@ -71,6 +71,6 @@ def build_unet(input_shape):
     return model
 
 
-#input_shape = (400, 400, 3)
-#model = build_unet(input_shape)
-#model.summary()
+input_shape = (400, 400, 3)
+model = build_unet(input_shape)
+model.summary()
