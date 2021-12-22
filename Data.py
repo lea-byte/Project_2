@@ -103,7 +103,6 @@ def augment_data(images, groundtruths, save_path, specials , flips = False, rota
                 
                 idx += 1
                       
-
 dataset_path = os.path.join("data","train")
 (train_x, train_y), (valid_x, valid_y) = load_data(dataset_path,split = 0.2)
 
