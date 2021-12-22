@@ -9,6 +9,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.metrics import Recall, Precision
 from model import build_unet
 from metrics import dice_loss, dice_coef, iou
+from Data import Directory_maker
 
 
 #Functions necessary for training
