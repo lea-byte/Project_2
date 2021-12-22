@@ -10,7 +10,7 @@ The best result obtained on AIcrowd:
 
 ## Reproduce our results
 
-## Team member
+## Team members
 * Thomas Hasler
 * Léa Grandoni
 * Blerton Rashiti
