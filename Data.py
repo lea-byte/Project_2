@@ -110,6 +110,7 @@ dataset_path = os.path.join("data","train")
 # list of special figures
 #special = []
 special = [15,20,21,26,27,28,30,31,37,42,64,65,67,68,72,73,83,87,92,97]
+#special = [11,15,16,20,21,22,24,28,32,51,52,54,55,58,59,65,68,72,77]
 
 print("Train: ", len(train_x))
 print("Valid: ", len(valid_x))
@@ -121,6 +122,5 @@ Directory_maker("new_data/valid/groundtruths/")
 
 augment_data(train_x, train_y, "new_data/train/", special, flips = False, rotations = False)
 augment_data(valid_x, valid_y, "new_data/valid/", [], flips = False, rotations = False)
-
 
 
