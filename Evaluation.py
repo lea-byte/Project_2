@@ -9,6 +9,7 @@ from tensorflow.keras.utils import CustomObjectScope
 from sklearn.metrics import accuracy_score, f1_score, jaccard_score, precision_score, recall_score
 from Train import load_data
 from Metrics import dice_loss, dice_coef, iou
+from Data import Directory_maker
 
 def save_results(image, groundtruth, y_pred, save_image_path):
     ## i - m - y
