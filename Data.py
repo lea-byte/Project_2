@@ -23,18 +23,23 @@ def load_data(path, split = 0.2):
     train_y, valid_y = train_test_split(groundtruths, test_size = split_size, random_state = 42)
     return (train_x, train_y), (valid_x, valid_y)
 
-def augment_data(images, groundtruths, save_path,specials , flips = False, rotations = False):
-        Number = 0
+def augment_data(images, groundtruths, save_path, specials , flips = False, rotations = False):
+        
         for idx, (x,y) in tqdm(enumerate(zip(images, groundtruths)), total = len(images)):
-            Number += 1
+            #print("this is the idx:")
+            #print(idx)
             """Getting the image name"""
             name = x.split("/")[-1].split(".")[0]
-            
+            #print(name)
+            Number = (int(name.split("_")[-1]))
             """Read the images and groundtruths"""
             
             x = mpimg.imread(x)
             y = mpimg.imread(y)
-            if ((flips == True) or (Number in specials)):  
+            
+            if ((flips == True) or (Number in specials)):
+                #print("INSIDE flips")
+                #print(Number)
                 # flip
                 #vertical
                 x1 = x[:, ::-1,:]
@@ -46,6 +51,7 @@ def augment_data(images, groundtruths, save_path,specials , flips = False, rotat
                 
                 if rotations or (Number in specials):
                     # rotations
+                    #print("INSIDE rotations")
                     x3 = rotate(x,90)
                     y3 = rotate(y,90)
                     x4 = rotate(x,180)
@@ -78,7 +84,8 @@ def augment_data(images, groundtruths, save_path,specials , flips = False, rotat
                 Y = [y]
                 
             idx = 0
-            
+            #print("new idx")
+            #print(idx)
             for i, gt in zip(X,Y):
                 gt = gt
                 gt = (gt > 0.5)*255
@@ -95,7 +102,7 @@ def augment_data(images, groundtruths, save_path,specials , flips = False, rotat
                 cv2.imwrite(groundtruth_path, gt)
                 
                 idx += 1
-         
+                      
 
 dataset_path = os.path.join("data","train")
 (train_x, train_y), (valid_x, valid_y) = load_data(dataset_path,split = 0.2)
