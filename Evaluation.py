@@ -11,6 +11,7 @@ from Train import load_data
 from Metrics import dice_loss, dice_coef, iou
 from Data import Directory_maker
 
+
 def save_results(image, groundtruth, y_pred, save_image_path):
     ## i - m - y
     line = np.ones((H, 10, 3)) * 128
@@ -74,7 +75,7 @@ for x, y in tqdm(zip(test_x, test_y), total=len(test_x)):
     y = y.flatten()
     y_pred = y_pred.flatten()
 
-##  Metrics - Accuracy, F1, Jaccard, Recall, Precision
+##  Metrics 
     acc_value = accuracy_score(y, y_pred)
     f1_value = f1_score(y, y_pred, labels=[0, 1], average="binary", zero_division=1)
     jac_value = jaccard_score(y, y_pred, labels=[0, 1], average="binary", zero_division=1)
@@ -84,11 +85,11 @@ for x, y in tqdm(zip(test_x, test_y), total=len(test_x)):
 
 score = [s[1:]for s in SCORE]
 score = np.mean(score, axis=0)
-#print(f"Accuracy: {score[0]:0.5f}")
-#print(f"F1: {score[1]:0.5f}")
-#print(f"Jaccard: {score[2]:0.5f}")
-#print(f"Recall: {score[3]:0.5f}")
-#print(f"Precision: {score[4]:0.5f}")
+print(f"Accuracy: {score[0]:0.5f}")
+print(f"F1: {score[1]:0.5f}")
+print(f"Jaccard: {score[2]:0.5f}")
+print(f"Recall: {score[3]:0.5f}")
+print(f"Precision: {score[4]:0.5f}")
 
 df = pd.DataFrame(SCORE, columns=["Image", "Accuracy", "F1", "Jaccard", "Recall", "Precision"])
 df.to_csv("files/score.csv")
