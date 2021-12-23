@@ -21,6 +21,10 @@ The best results obtained on AIcrowd:
 
 ## Reproduce our results
 
+One needs to download the following file [URL] ("model.h5") and add in the folder "files".
+
+If one simply wants to reproduce the **predictions** made (without recompiling the entire model which takes many hours), one should run the file `.py`. 
+
 ## Team members
 * Thomas Hasler
 * Léa Grandoni
@@ -31,24 +35,28 @@ We used the following libraries:
 * [scikit-learn](https://scikit-learn.org/stable/)
 * [keras](https://keras.io/)
 * [tensorflow](https://www.tensorflow.org/install/)
+* [Matplotlib](https://matplotlib.org/)
 * [numpy](https://numpy.org/)
-* [matplotlib](https://matplotlib.org/stable/users/installing/index.html)
-* [pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
+* [pandas](https://https://pandas.pydata.org/)
+* [tqdm](https://tqdm.github.io/)
+* [opencv](https://opencv.org/)
+* [os](https://docs.python.org/3/library/os.html)
+* [sys](https://docs.python.org/fr/3/library/sys.html)
+* [glob](https://docs.python.org/3/library/glob.html)
+* [Random](https://docs.python.org/3/library/random.html)
 
 ## Python code
 
 We have created several python files that allow us to achieve our goal:
 
-`Data.py`
+`Data.py`: This is the file which takes care of the data augmentation.
 
-`Evaluation.py`
+`Evaluation.py`: This file is used to evaluate the results obtained on the validation test by looking at various metrics.
 
-`Metrics.py`
+`Metrics.py`: File containing useful functions for the simulation (loss function, iou ...) 
 
-`Model.py`
+`Model.py`: File containing the u-net model structure.
 
-`Train.py`
+`Train.py`: File dedicated to the training of  the u-net model structure.
 
-`Mask_to_submission_.py`
-
-This python file allows us to convert the groundtruths images into a .csv file so that we can evaluate our results on AIcrowd.
+`All_in_one.py`: This is a file containing all the others as one. This is only to be run if there is a problem with the rest. This was the code that was used through out the project. The separation of files was done to emphasize a better project structure and facilitate partial code running.
