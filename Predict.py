@@ -18,10 +18,13 @@ Directory_maker("test")
 
 ## loading model from training in the h5 file
 with CustomObjectScope({'iou': iou, 'dice_coef': dice_coef, 'dice_loss': dice_loss}):
-    model = tf.keras.models.load_model("files/model.h5")
+    model = tf.keras.models.load_model( os.path.join("files","model.h5"))
+    #model = tf.keras.models.load_model("files/model.h5")
     
 ## loading images for the test
-test_x = glob("data/test_set_images/*/*.png")
+
+test_x = glob(os.path.join("data/test_set_images", "*", "*.png"))
+#test_x = glob("data/test_set_images/*/*.png")
 print(f"Test: {len(test_x)}")
 
 ## loading images for the test
@@ -30,7 +33,9 @@ for x in tqdm(test_x):
     #dir_name = x.split("/")[-2]
     #print(dir_name)
     #name = dir_name + "_" + x.split("/")[-1].split(".")[0]
-    name = x.split("/")[-1].split(".")[0]
+    temporary_string = os.path.join("a","a")
+    forward_or_backslash = temporary_string[-2]
+    name = x.split(forward_or_backslash)[-1].split(".")[0]
     #print(name)
     ##  obtaining the actual image data
     image = cv2.imread(x, cv2.IMREAD_COLOR)
@@ -70,5 +75,7 @@ for x in tqdm(test_x):
     groundtruth = Fuse_image_output(groundtruth1,groundtruth2,groundtruth3,groundtruth4,400) * 255
     groundtruth = np.concatenate([groundtruth, groundtruth, groundtruth], axis=-1)  ## (400, 400, 3)
     cat_images = np.concatenate([image, groundtruth], axis=1)
-    cv2.imwrite(f"test/{name}.png", cat_images)
     
+    #cv2.imwrite(os.path.join("test",f"{name}.png"), cat_images)
+    cv2.imwrite(os.path.join("test",f"{name}.png"), groundtruth)
+
