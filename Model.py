@@ -1,3 +1,6 @@
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import os,sys
@@ -16,7 +19,10 @@ from tensorflow.python.keras.layers import Input, Conv2D, Conv2DTranspose, Activ
 from tensorflow.python.keras.layers import Add, Concatenate
 from tensorflow.python.keras.losses import binary_crossentropy
 from tensorflow.python.keras.optimizers import Adam
-from Data import Directory_maker
+
+
+
+
 
 # Convolution part of the encoder
 
@@ -71,6 +77,8 @@ def build_unet(input_shape):
     return model
 
 
+#
 input_shape = (400, 400, 3)
 model = build_unet(input_shape)
 model.summary()
+
