@@ -21,9 +21,9 @@ The best results obtained on AIcrowd:
 
 ## Reproduce our results
 
-One needs to download the following file [Link to Google](https://www.google.com) ("model.h5") and add in the folder "files".
+One needs to download the following file [URL] ("model.h5") and add in the folder "files".
 
-If one simply wants to reproduce the **predictions** made (without recompiling the entire model which takes many hours), one should run the file `.py`. 
+If one simply wants to reproduce the **predictions** made (without recompiling the entire model which takes many hours), one should run the file `Predict.py`. It will create the groundtruths in the folder "test". 
 
 ## Team members
 * Thomas Hasler
@@ -58,5 +58,7 @@ We have created several python files that allow us to achieve our goal:
 `Model.py`: File containing the u-net model structure.
 
 `Train.py`: File dedicated to the training of  the u-net model structure.
+
+`Predict.py`: This is the file which takes care of doing predictions on the test set.
 
 `All_in_one.py`: This is a file containing all the others as one. This is only to be run if there is a problem with the rest. This was the code that was used through out the project. The separation of files was done to emphasize a better project structure and facilitate partial code running.
