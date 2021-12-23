@@ -5,8 +5,19 @@ The main goal of this project is to propose an algorithm that segments satellite
 All the data is available via [AIcrowd page](https://www.aicrowd.com/challenges/epfl-ml-road-segmentation).
 
 The best result obtained on AIcrowd:
-* ID :
-* Username :
+
+`Best F1 score`:
+* ID : 169531
+* Username : toni
+* F1 score : 87.0 %
+* Accuracy : 93.0 %
+
+`Best accuracy`:
+* ID : 169512
+* Username : toni
+* F1 score : 86.9 %
+* Accuracy : 93.2 %
+
 
 ## Reproduce our results
 
