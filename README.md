@@ -47,4 +47,7 @@ We have created several python files that allow us to achieve our goal:
 
 `Train.py`
 
+`Train.py`
 
+`Mask_to_submission_.py`
+This python file allows us to convert the groundtruths images into a .csv file so that we can evaluate our results on AIcrowd.
