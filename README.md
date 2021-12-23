@@ -57,7 +57,7 @@ We have created several python files that allow us to achieve our goal:
 
 `Model.py`: File containing the u-net model structure.
 
-`Train.py`: File dedicated to the training of  the u-net model structure.
+`Train.py`: File dedicated to the training of the u-net model structure.
 
 `Predict.py`: This is the file which takes care of doing predictions on the test set.
 
