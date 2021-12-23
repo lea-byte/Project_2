@@ -71,9 +71,9 @@ Directory_maker("files")
 
 ## Hyperparameters
 
-batch_size = 1
-learning_rate = 0.001
-epochs = 10
+batch_size = 2
+learning_rate = 0.0001
+epochs = 30
 
 ## files for saving information of simulation
 model_path = os.path.join("files", "model.h5")

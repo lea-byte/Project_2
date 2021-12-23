@@ -1,6 +1,3 @@
-
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import os,sys
@@ -19,9 +16,6 @@ from tensorflow.python.keras.layers import Input, Conv2D, Conv2DTranspose, Activ
 from tensorflow.python.keras.layers import Add, Concatenate
 from tensorflow.python.keras.losses import binary_crossentropy
 from tensorflow.python.keras.optimizers import Adam
-
-
-
 
 
 # Convolution part of the encoder

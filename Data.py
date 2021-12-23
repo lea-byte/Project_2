@@ -1,6 +1,3 @@
-
-
-#get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from skimage.transform import rotate, resize
@@ -12,17 +9,10 @@ from glob import glob
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
 
-
-
-
 # creates a directory if it does not exist
 def Directory_maker(path):
         if not os.path.exists(path):
             os.makedirs(path)
-
-
-
-
 
 # Loading_images
 def load_data(path, split = 0.2):
@@ -35,14 +25,6 @@ def load_data(path, split = 0.2):
     train_x, valid_x = train_test_split(images, test_size = split_size, random_state = 42)
     train_y, valid_y = train_test_split(groundtruths, test_size = split_size, random_state = 42)
     return (train_x, train_y), (valid_x, valid_y)
-
-
-
-
-
-
-
-
 
 
 def augment_data(images, groundtruths, save_path, specials , flips = False, rotations = False):
@@ -123,7 +105,7 @@ def augment_data(images, groundtruths, save_path, specials , flips = False, rota
                 
                 idx += 1
                 
-
+                
 dataset_path = os.path.join("data","train")
 (train_x, train_y), (valid_x, valid_y) = load_data(dataset_path,split = 0.2)
 
@@ -141,4 +123,3 @@ Directory_maker(os.path.join("new_data","valid","groundtruths",""))
 
 augment_data(train_x, train_y, os.path.join("new_data","train",""), special, flips = False, rotations = False)
 augment_data(valid_x, valid_y,os.path.join("new_data","valid",""), [], flips = False, rotations = False)
-
