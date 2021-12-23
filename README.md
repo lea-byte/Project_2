@@ -4,7 +4,7 @@ The main goal of this project is to propose an algorithm that segments satellite
 
 All data are available via [AIcrowd page](https://www.aicrowd.com/challenges/epfl-ml-road-segmentation).
 
-The best result obtained on AIcrowd:
+The best results obtained on AIcrowd:
 
 `Best F1 score`:
 * ID : 169531
