@@ -21,7 +21,7 @@ The best results obtained on AIcrowd:
 
 ## Reproduce our results
 
-One needs to download the following file [Link to Google](https://drive.google.com/drive/folders/1QMR6vAgQ6qgouEpwKOUwgjHDPQXWfOF_?usp=sharing) ("model.h5") and add in the folder "files".
+One needs to download the following [file](https://drive.google.com/drive/folders/1QMR6vAgQ6qgouEpwKOUwgjHDPQXWfOF_?usp=sharing) ("model.h5") and add in the folder "files".
 
 If one simply wants to reproduce the **predictions** made (without recompiling the entire model which takes many hours), one should run the file `Predict.py`. It will create the groundtruths in the folder "test". 
 
