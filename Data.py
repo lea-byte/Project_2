@@ -1,4 +1,6 @@
-get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+#get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from skimage.transform import rotate, resize
@@ -10,36 +12,56 @@ from glob import glob
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
 
+
+
+
+# creates a directory if it does not exist
 def Directory_maker(path):
         if not os.path.exists(path):
             os.makedirs(path)
 
+
+
+
+
 # Loading_images
 def load_data(path, split = 0.2):
-    images = sorted(glob(f"{path}/images/*.png"))
-    groundtruths = sorted(glob(f"{path}/groundtruths/*.png"))
+    new_path_image = os.path.join(f"{path}",os.path.join("images","")+"*.png")
+    new_path_groundtruth = os.path.join(f"{path}",os.path.join("groundtruths","")+"*.png")
+    images = sorted(glob(new_path_image))    
+    print(len(images))
+    groundtruths = sorted(glob(new_path_groundtruth))
     split_size = int(len(images)*split)
     train_x, valid_x = train_test_split(images, test_size = split_size, random_state = 42)
     train_y, valid_y = train_test_split(groundtruths, test_size = split_size, random_state = 42)
     return (train_x, train_y), (valid_x, valid_y)
+
+
+
+
+
+
+
+
+
 
 def augment_data(images, groundtruths, save_path, specials , flips = False, rotations = False):
         
         for idx, (x,y) in tqdm(enumerate(zip(images, groundtruths)), total = len(images)):
             #print("this is the idx:")
             #print(idx)
-            """Getting the image name"""
-            name = x.split("/")[-1].split(".")[0]
-            #print(name)
+            #Getting the image name
+            temporary_string = os.path.join("a","a")
+            forward_or_backslash = temporary_string[-2]
+            name = x.split(forward_or_backslash)[-1].split(".")[0]
             Number = (int(name.split("_")[-1]))
-            """Read the images and groundtruths"""
+            
+            ## Read the images and groundtruths
             
             x = mpimg.imread(x)
             y = mpimg.imread(y)
             
             if ((flips == True) or (Number in specials)):
-                #print("INSIDE flips")
-                #print(Number)
                 # flip
                 #vertical
                 x1 = x[:, ::-1,:]
@@ -51,7 +73,6 @@ def augment_data(images, groundtruths, save_path, specials , flips = False, rota
                 
                 if rotations or (Number in specials):
                     # rotations
-                    #print("INSIDE rotations")
                     x3 = rotate(x,90)
                     y3 = rotate(y,90)
                     x4 = rotate(x,180)
@@ -84,8 +105,6 @@ def augment_data(images, groundtruths, save_path, specials , flips = False, rota
                 Y = [y]
                 
             idx = 0
-            #print("new idx")
-            #print(idx)
             for i, gt in zip(X,Y):
                 gt = gt
                 gt = (gt > 0.5)*255
@@ -95,14 +114,16 @@ def augment_data(images, groundtruths, save_path, specials , flips = False, rota
                 else:
                     tmp_image_name = f"{name}_{idx}.png"
                     tmp_groundtruth_name = f"{name}_{idx}.png"
-                image_path = os.path.join(save_path, "images/", tmp_image_name)
-                groundtruth_path = os.path.join(save_path, "groundtruths/", tmp_groundtruth_name)
+                #print("the temp image name is " + tmp_image_name)
+                image_path = os.path.join(save_path,os.path.join("images", tmp_image_name))
+                groundtruth_path = os.path.join(save_path, os.path.join("groundtruths", tmp_groundtruth_name))
                 mpimg.imsave(image_path, i)
                 #print(gt.shape)
                 cv2.imwrite(groundtruth_path, gt)
                 
                 idx += 1
-                      
+                
+
 dataset_path = os.path.join("data","train")
 (train_x, train_y), (valid_x, valid_y) = load_data(dataset_path,split = 0.2)
 
@@ -113,13 +134,11 @@ special = [15,20,21,26,27,28,30,31,37,42,64,65,67,68,72,73,83,87,92,97]
 
 print("Train: ", len(train_x))
 print("Valid: ", len(valid_x))
+Directory_maker(os.path.join("new_data","train","images",""))
+Directory_maker(os.path.join("new_data","train","groundtruths",""))
+Directory_maker(os.path.join("new_data","valid","images",""))
+Directory_maker(os.path.join("new_data","valid","groundtruths",""))
 
-Directory_maker("new_data/train/images/")
-Directory_maker("new_data/train/groundtruths/")
-Directory_maker("new_data/valid/images/")
-Directory_maker("new_data/valid/groundtruths/")
-
-augment_data(train_x, train_y, "new_data/train/", special, flips = False, rotations = False)
-augment_data(valid_x, valid_y, "new_data/valid/", [], flips = False, rotations = False)
-
+augment_data(train_x, train_y, os.path.join("new_data","train",""), special, flips = False, rotations = False)
+augment_data(valid_x, valid_y,os.path.join("new_data","valid",""), [], flips = False, rotations = False)
 
